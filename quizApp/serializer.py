@@ -24,7 +24,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('updated', 'title', 'difficulty', 'date_created', 'quiz', 'answer')
+        fields = ('updated', 'Question_text', 'difficulty', 'date_created', 'quiz', 'answer')
 
 
 
@@ -33,10 +33,10 @@ class QuizSerializer(serializers.ModelSerializer):
     question = QuestionSerializer(many=True, read_only=True)
     class Meta:
         model = Quiz
-        fields = ('name', 'created_date', 'category', 'question')
+        fields = ('Quiz_name', 'created_date', 'category', 'question')
 
 class CategorySerializer(serializers.ModelSerializer):
     quiz_set = QuizSerializer(many=True, read_only=True)
     class Meta:
         model = Category
-        fields = ("name", "quiz_set")
+        fields = ("Category_name", "quiz_set")
